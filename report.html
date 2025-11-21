@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PCOS Risk Assessment Report</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #f8f0f5;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 900px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 4px 25px rgba(255, 192, 203, 0.4);
+      }
+      h1,
+      h2 {
+        text-align: center;
+        color: #d63384;
+        margin-bottom: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      th,
+      td {
+        border: 1px solid #d63384;
+        padding: 12px;
+        text-align: left;
+      }
+      th {
+        background: #ffe6f2;
+      }
+      .risk {
+        font-weight: bold;
+        font-size: 18px;
+        padding: 5px 10px;
+        border-radius: 8px;
+        color: #fff;
+        display: inline-block;
+      }
+      .risk-low {
+        background: #28a745;
+      }
+      .risk-moderate {
+        background: #ffc107;
+        color: #000;
+      }
+      .risk-high {
+        background: #dc3545;
+      }
+      .advice-section {
+        margin-top: 25px;
+      }
+      .advice-section h3 {
+        color: #d63384;
+        margin-bottom: 10px;
+      }
+      ul {
+        margin-left: 20px;
+      }
+      .chart-container {
+        margin-top: 25px;
+      }
+      .download-btn {
+        margin-top: 30px;
+        background: #d63384;
+        color: #fff;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      .download-btn:hover {
+        background: #e75480;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🩺 PCOS Risk Assessment Report</h1>
+      <div id="reportContent"></div>
+
+      <div class="chart-container">
+        <canvas id="bmiChart" height="150"></canvas>
+      </div>
+
+      <button class="download-btn" onclick="window.print()">
+        📄 Download/Print Report
+      </button>
+    </div>
+
+    <script>
+      // Fetch data from sessionStorage
+      const name = sessionStorage.getItem("name");
+      const age = sessionStorage.getItem("age");
+      const height = sessionStorage.getItem("height");
+      const weight = sessionStorage.getItem("weight");
+      const score = parseInt(sessionStorage.getItem("score"));
+
+      if (!name || !age || !height || !weight || isNaN(score)) {
+        document.getElementById("reportContent").innerHTML =
+          "<p style='text-align:center;color:red;'>No data found. Please fill the assessment first.</p>";
+      } else {
+        const bmi = (weight / (height / 100) ** 2).toFixed(1);
+
+        // Determine risk level and advice
+        let risk = "",
+          riskClass = "",
+          lifestyleAdvice = "",
+          stressTips = "",
+          consultAdvice = "";
+        if (score <= 8) {
+          risk = "Low Risk 🌿";
+          riskClass = "risk-low";
+          lifestyleAdvice = `
+      <ul>
+        <li>Maintain a balanced diet with fruits, vegetables, and whole grains.</li>
+        <li>Exercise at least 3–4 times a week.</li>
+        <li>Ensure 7–8 hours of sleep nightly.</li>
+        <li>Stay hydrated and avoid processed food.</li>
+      </ul>`;
+          stressTips = `
+      <ul>
+        <li>Practice light yoga or meditation 10–15 mins daily.</li>
+        <li>Take short breaks during work/study.</li>
+      </ul>`;
+          consultAdvice = "Routine check-up if needed.";
+        } else if (score <= 18) {
+          risk = "Moderate Risk 🌸";
+          riskClass = "risk-moderate";
+          lifestyleAdvice = `
+      <ul>
+        <li>Maintain a consistent meal schedule and healthy diet.</li>
+        <li>Include moderate exercise daily (walking, cycling, yoga).</li>
+        <li>Monitor menstrual cycles and track changes.</li>
+        <li>Limit sugary and processed foods.</li>
+      </ul>`;
+          stressTips = `
+      <ul>
+        <li>Meditation or deep breathing 15–20 mins daily.</li>
+        <li>Keep a journal to manage mood fluctuations.</li>
+        <li>Take relaxing walks or hobbies to reduce stress.</li>
+      </ul>`;
+          consultAdvice = "Consult a gynecologist if symptoms persist.";
+        } else {
+          risk = "High Risk 💗";
+          riskClass = "risk-high";
+          lifestyleAdvice = `
+      <ul>
+        <li>Adopt a strict balanced diet rich in fiber and lean proteins.</li>
+        <li>Exercise regularly (at least 5 times a week).</li>
+        <li>Maintain a sleep schedule of 7–8 hours.</li>
+        <li>Avoid processed and high-sugar foods.</li>
+      </ul>`;
+          stressTips = `
+      <ul>
+        <li>Daily meditation or mindfulness practice.</li>
+        <li>Consider counseling or therapy if stress is high.</li>
+        <li>Engage in relaxing hobbies or physical activity.</li>
+      </ul>`;
+          consultAdvice =
+            "Consult a gynecologist or endocrinologist immediately for hormonal evaluation.";
+        }
+
+        const reportHTML = `
+    <h2>Patient Details</h2>
+    <table>
+      <tr><th>Name</th><td>${name}</td></tr>
+      <tr><th>Age</th><td>${age}</td></tr>
+      <tr><th>Height</th><td>${height} cm</td></tr>
+      <tr><th>Weight</th><td>${weight} kg</td></tr>
+      <tr><th>BMI</th><td>${bmi}</td></tr>
+      <tr><th>Risk Level</th><td class="risk ${riskClass}">${risk}</td></tr>
+    </table>
+
+    <div class="advice-section">
+      <h3>Lifestyle Advice</h3>${lifestyleAdvice}
+      <h3>Stress Management Tips</h3>${stressTips}
+      <h3>Consultation Recommendation</h3><p>${consultAdvice}</p>
+    </div>
+  `;
+
+        document.getElementById("reportContent").innerHTML = reportHTML;
+
+        // Chart showing BMI and Risk Score
+        const ctx = document.getElementById("bmiChart").getContext("2d");
+        new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: ["BMI", "Risk Score"],
+            datasets: [
+              {
+                label: "Value",
+                data: [bmi, score],
+                backgroundColor: ["#f48fb1", "#d63384"],
+                borderRadius: 5,
+              },
+            ],
+          },
+          options: {
+            scales: { y: { beginAtZero: true } },
+            plugins: { legend: { display: false } },
+          },
+        });
+      }
+    </script>
+  </body>
+</html>

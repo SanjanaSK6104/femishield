@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FemiShield Breast Cancer Assessment</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #ffe6f2;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 35px;
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(255, 192, 203, 0.4);
+      }
+
+      h1,
+      h2 {
+        text-align: center;
+        color: #d63384;
+      }
+
+      label {
+        display: block;
+        margin-top: 20px;
+        font-weight: 600;
+        color: #444;
+      }
+
+      input[type="text"],
+      input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        margin-top: 5px;
+        font-size: 14px;
+      }
+
+      .question {
+        margin-top: 20px;
+        background: #fff0f5;
+        padding: 15px;
+        border-radius: 10px;
+      }
+
+      .options label {
+        display: block;
+        font-weight: 500;
+        margin: 6px 0;
+        cursor: pointer;
+        color: #555;
+      }
+
+      input[type="radio"] {
+        accent-color: #d63384;
+        margin-right: 8px;
+      }
+
+      button {
+        display: block;
+        margin: 30px auto;
+        padding: 12px 30px;
+        background: #ff69b4;
+        color: #fff;
+        font-size: 16px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+
+      button:hover {
+        background: #e75480;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .report {
+        text-align: center;
+        background: #fff0f5;
+        padding: 30px;
+        border-radius: 15px;
+        color: #444;
+      }
+
+      .risk {
+        font-weight: bold;
+        color: #b30059;
+        font-size: 18px;
+      }
+
+      .advice {
+        margin-top: 15px;
+        font-style: italic;
+      }
+
+      .download-btn {
+        margin-top: 20px;
+        background: #d63384;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="quizContainer">
+      <h1>💗 FemiShield Breast Cancer Self Assessment 💗</h1>
+      <h2>Personal Information</h2>
+
+      <label>Name:</label>
+      <input type="text" id="name" required />
+      <label>Age:</label>
+      <input type="number" id="age" required />
+      <label>Height (in cm):</label>
+      <input type="number" id="height" required />
+      <label>Weight (in kg):</label>
+      <input type="number" id="weight" required />
+
+      <h2>Questionnaire</h2>
+      <div id="questions">
+        <!-- 15 Questions -->
+        <div class="question">
+          <label>1. Age</label>
+          <div class="options">
+            <label
+              ><input type="radio" name="q1" value="0" /> Less than 40</label
+            >
+            <label><input type="radio" name="q1" value="1" /> 40 - 50</label>
+            <label><input type="radio" name="q1" value="2" /> Above 50</label>
+          </div>
+        </div>
+        <div class="question">
+          <label>2. First-degree relative diagnosed with breast cancer</label>
+          <div class="options">
+            <label><input type="radio" name="q2" value="0" /> No</label>
+            <label><input type="radio" name="q2" value="2" /> Yes</label>
+          </div>
+        </div>
+        <div class="question">
+          <label>3. Second-degree relative diagnosed with breast cancer</label>
+          <div class="options">
+            <label><input type="radio" name="q3" value="0" /> No</label>
+            <label><input type="radio" name="q3" value="1" /> Yes</label>
+          </div>
+        </div>
+        <div class="question">
+          <label>4. Benign breast lump or biopsy?</label>
+          <div class="options">
+            <label><input type="radio" name="q4" value="0" /> No</label>
+            <label><input type="radio" name="q4" value="2" /> Yes</label>
+          </div>
+        </div>
+        <div class="question">
+          <label>5. Other cancers diagnosed?</label>
+          <div class="options">
+            <label><input type="radio" name="q5" value="0" /> No</label>
+            <label><input type="radio" name="q5" value="2" /> Yes</label>
+          </div>
+        </div>
+        <div class="question">
+          <label>6. Menstruated before age 12?</label>
+          <div class="options">
+            <label><input type="radio" name="q6" value="0" /> No</label>
+            <label><input type="radio" name="q6" value="1" /> Yes</label>
+          </div>
+        </div>
+        <div class="question">
+          <label>7. Menopause after age 55?</label>
+          <div class="options">
+            <label><input type="radio" name="q7" value="0" /> No</label>
+            <label><input type="radio" name="q7" value="1" /> Yes</label>
+            <label
+              ><input type="radio" name="q7" value="0" /> Not yet / N/A</label
+            >
+          </div>
+        </div>
+        <div class="question">
+          <label>8. Never had children?</label>
+          <div class="options">
+            <label><input type="radio" name="q8" value="0" /> No</label>
+            <label><input type="radio" name="q8" value="1" /> Yes</label>
+          </div>
+        </div>
+        <div class="question">
+          <label>9. First child after age 30?</label>
+          <div class="options">
+            <label><input type="radio" name="q9" value="0" /> No</label>
+            <label><input type="radio" name="q9" value="1" /> Yes</label>
+            <label
+              ><input type="radio" name="q9" value="0" /> Never had
+              children</label
+            >
+          </div>
+        </div>
+        <div class="question">
+          <label>10. Breastfed less than 6 months?</label>
+          <div class="options">
+            <label><input type="radio" name="q10" value="0" /> No</label>
+            <label><input type="radio" name="q10" value="1" /> Yes</label>
+            <label
+              ><input type="radio" name="q10" value="0" /> Never had
+              children</label
+            >
+          </div>
+        </div>
+        <div class="question">
+          <label>11. Alcohol consumption</label>
+          <div class="options">
+            <label><input type="radio" name="q11" value="0" /> Never</label>
+            <label
+              ><input type="radio" name="q11" value="1" /> Occasionally</label
+            >
+            <label
+              ><input type="radio" name="q11" value="2" /> Frequently</label
+            >
+          </div>
+        </div>
+        <div class="question">
+          <label>12. Sedentary lifestyle?</label>
+          <div class="options">
+            <label><input type="radio" name="q12" value="0" /> No</label>
+            <label><input type="radio" name="q12" value="1" /> Sometimes</label>
+            <label><input type="radio" name="q12" value="2" /> Yes</label>
+          </div>
+        </div>
+        <div class="question">
+          <label>13. High-fat diet or obesity?</label>
+          <div class="options">
+            <label><input type="radio" name="q13" value="0" /> No</label>
+            <label><input type="radio" name="q13" value="1" /> Sometimes</label>
+            <label><input type="radio" name="q13" value="2" /> Yes</label>
+          </div>
+        </div>
+        <div class="question">
+          <label>14. Lumps, swelling, or changes noticed?</label>
+          <div class="options">
+            <label><input type="radio" name="q14" value="0" /> No</label>
+            <label><input type="radio" name="q14" value="1" /> Sometimes</label>
+            <label><input type="radio" name="q14" value="2" /> Yes</label>
+          </div>
+        </div>
+        <div class="question">
+          <label>15. Nipple discharge, inversion, skin changes, pain?</label>
+          <div class="options">
+            <label><input type="radio" name="q15" value="0" /> No</label>
+            <label><input type="radio" name="q15" value="1" /> Sometimes</label>
+            <label><input type="radio" name="q15" value="2" /> Yes</label>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="generateReport()">Submit</button>
+    </div>
+
+    <div class="container hidden" id="resultContainer">
+      <div class="report" id="report"></div>
+      <button class="download-btn" onclick="window.print()">
+        📄 Download/Print Report
+      </button>
+    </div>
+
+    <script>
+      const backendURL = "http://127.0.0.1:5000"; // Flask backend
+
+      async function generateReport() {
+        const name = document.getElementById("name").value.trim();
+        const age = document.getElementById("age").value;
+        const height = document.getElementById("height").value;
+        const weight = document.getElementById("weight").value;
+
+        if (!name || !age || !height || !weight) {
+          alert("Please fill in your personal details first!");
+          return;
+        }
+
+        const questions = 15;
+        let score = 0;
+        let answersArray = [];
+
+        for (let i = 1; i <= questions; i++) {
+          const selected = document.querySelector(
+            `input[name="q${i}"]:checked`
+          );
+          if (!selected) {
+            alert(`Please answer Question ${i}`);
+            return;
+          }
+          const answerText = selected.parentElement.textContent.trim();
+          const answerScore = parseInt(selected.value);
+          score += answerScore;
+
+          answersArray.push({
+            question: `Q${i}`,
+            answer: answerText,
+            score: answerScore,
+          });
+        }
+
+        const bmi = (weight / (height / 100) ** 2).toFixed(1);
+        let bmiCategory =
+          bmi < 18.5
+            ? "Underweight"
+            : bmi < 25
+            ? "Normal weight"
+            : bmi < 30
+            ? "Overweight"
+            : "Obese";
+
+        let risk = "",
+          advice = "",
+          riskColor = "",
+          alertMessage = "";
+        if (score <= 5) {
+          risk = "Low Risk 🌿";
+          advice =
+            "Maintain a healthy lifestyle, regular self-checks, and routine screenings.";
+          riskColor = "#28a745";
+        } else if (score <= 10) {
+          risk = "Moderate Risk 🌸";
+          advice =
+            "Be vigilant with monthly self-checks, maintain healthy habits, and consult a doctor if symptoms appear.";
+          riskColor = "#ffc107";
+        } else {
+          risk = "High Risk 💗";
+          advice =
+            "Consult a healthcare professional immediately for proper evaluation and screening.";
+          riskColor = "#dc3545";
+          alertMessage = `
+            <div style="background:#ffcccc; color:#b30000; font-weight:bold; padding:15px; border-radius:10px; margin-bottom:20px; text-align:center;">
+              ⚠️ High Risk Detected! Please consult a doctor ASAP for proper evaluation.
+            </div>
+          `;
+        }
+
+        document.getElementById("quizContainer").classList.add("hidden");
+
+        const reportHTML = `
+          <div style="text-align:right; font-size:14px; color:#555; margin-bottom:10px;">
+            📞 1234567890 | 0987654321 &nbsp;&nbsp;|&nbsp;&nbsp; 📧 femishield@proj.com
+          </div>
+          ${alertMessage}
+          <h2>Breast Cancer Risk Assessment Report</h2>
+          <table border="1" cellpadding="10" cellspacing="0" style="margin:auto; margin-top:10px; border-collapse:collapse; width:80%; font-family:'Poppins', sans-serif;">
+            <tr style="background:#ffe6f2; text-align:left;"><th>Field</th><th>Details</th></tr>
+            <tr><td>Name</td><td>${name}</td></tr>
+            <tr><td>Age</td><td>${age} years</td></tr>
+            <tr><td>Height</td><td>${height} cm</td></tr>
+            <tr><td>Weight</td><td>${weight} kg</td></tr>
+            <tr><td>BMI</td><td>${bmi} (${bmiCategory})</td></tr>
+            <tr><td>Risk Level</td><td style="color:${riskColor}; font-weight:bold;">${risk}</td></tr>
+            <tr><td>Advice</td><td>${advice}</td></tr>
+          </table>
+
+          <h3>Lifestyle & Screening Tips</h3>
+          <ul style="text-align:left; max-width:600px; margin:auto;">
+            <li>Perform regular breast self-exams monthly.</li>
+            <li>Maintain a balanced diet and healthy weight.</li>
+            <li>Exercise at least 150 minutes/week.</li>
+            <li>Limit alcohol consumption and avoid smoking.</li>
+            <li>Schedule routine mammograms or clinical exams as recommended by a doctor.</li>
+            <li>Consult a healthcare provider immediately if any unusual changes occur.</li>
+          </ul>
+
+          <div id="comparisonMessage" style="text-align:center; margin-top:20px; font-weight:bold; color:#d63384;"></div>
+        `;
+
+        document.getElementById("report").innerHTML = reportHTML;
+        document.getElementById("resultContainer").classList.remove("hidden");
+
+        // Send assessment to backend
+        sendAssessment({
+          email: "user@example.com", // replace with actual logged-in email
+          personalInfo: { name, age, height, weight },
+          answers: answersArray,
+          totalScore: score,
+          riskLevel: risk,
+        });
+      }
+
+      async function sendAssessment(assessmentData) {
+        try {
+          const response = await fetch(`${backendURL}/bcancer`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(assessmentData),
+          });
+
+          const data = await response.json();
+
+          // If backend sends a comparison message
+          if (data.success && data.comparison) {
+            document.getElementById("comparisonMessage").innerText =
+              data.comparison;
+          }
+
+          // Show popup alert
+          alert("Report sent successfully! ✅");
+        } catch (err) {
+          console.error("Error sending assessment:", err);
+          alert("Failed to send report! ❌");
+        }
+      }
+    </script>
+  </body>
+</html>

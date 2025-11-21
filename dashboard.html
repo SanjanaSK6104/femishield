@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - FemiShield</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #fdeff2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .card {
+        background: #ffffff;
+        padding: 40px;
+        width: 380px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        text-align: center;
+      }
+      h2 {
+        color: #b03762;
+        margin-bottom: 10px;
+      }
+      p {
+        font-size: 18px;
+        margin-bottom: 25px;
+        color: #5a5a5a;
+      }
+      button {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 6px;
+        background: #c54b6c;
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background: #a63b59;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>Welcome, <span id="userName">User</span> 🌸</h2>
+      <p>
+        Your journey begins here. Ready to assess and understand your wellness
+        better?
+      </p>
+      <button onclick="beginAssessment()">Begin Assessment</button>
+    </div>
+
+    <script>
+      const user = JSON.parse(localStorage.getItem("femi_user"));
+      if (!user) {
+        alert("Please sign in first.");
+        window.location.href = "signin.html";
+      } else {
+        document.getElementById("userName").textContent = user.name;
+      }
+
+      function beginAssessment() {
+        window.location.href = "assessment.html";
+      }
+    </script>
+  </body>
+</html>

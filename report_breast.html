@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Breast Cancer Assessment Report</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #fce4ec;
+        display: flex;
+        justify-content: center;
+        padding: 30px 10px;
+      }
+      .report-card {
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        padding: 30px 40px;
+        max-width: 600px;
+        width: 100%;
+      }
+      h2 {
+        text-align: center;
+        color: #d81b60;
+        margin-bottom: 25px;
+      }
+      .report-item {
+        margin: 10px 0;
+        font-size: 16px;
+      }
+      .risk-level {
+        font-weight: bold;
+      }
+      .risk-bar {
+        width: 100%;
+        height: 20px;
+        background: #f3f3f3;
+        border-radius: 10px;
+        margin: 5px 0 15px;
+        overflow: hidden;
+      }
+      .risk-bar-fill {
+        height: 100%;
+        width: 0;
+        border-radius: 10px;
+        text-align: right;
+        color: white;
+        padding-right: 10px;
+        line-height: 20px;
+        font-weight: bold;
+        transition: width 1s ease-in-out;
+      }
+      .recommendation {
+        background: #fce4ec;
+        color: #880e4f;
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 20px;
+      }
+      .btn {
+        margin-top: 20px;
+        display: block;
+        width: 100%;
+        padding: 12px;
+        border: none;
+        background: #d81b60;
+        color: white;
+        font-size: 16px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background: #b0144b;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="report-card">
+      <h2>Breast Cancer Assessment Report</h2>
+      <div class="report-item">
+        <strong>Name:</strong> <span id="name"></span>
+      </div>
+      <div class="report-item">
+        <strong>Age:</strong> <span id="age"></span>
+      </div>
+      <div class="report-item">
+        <strong>Weight:</strong> <span id="weight"></span>
+      </div>
+      <div class="report-item">
+        <strong>Height:</strong> <span id="height"></span>
+      </div>
+
+      <div class="report-item">
+        <strong>Breast Cancer Risk Level:</strong>
+        <span id="risk-text" class="risk-level"></span>
+      </div>
+      <div class="risk-bar">
+        <div id="risk-bar-fill" class="risk-bar-fill">0%</div>
+      </div>
+
+      <div class="recommendation" id="recommendation">
+        <!-- Lifestyle recommendations will appear here -->
+      </div>
+
+      <button class="btn" onclick="window.print()">
+        Download / Print Report
+      </button>
+    </div>
+
+    <script>
+      // Load user data from sessionStorage
+      let userData = JSON.parse(sessionStorage.getItem("userData")); // store BC data here from assessment page
+
+      if (!userData) {
+        alert("No data found. Please fill the assessment first.");
+        window.location.href = "assessment.html";
+      }
+
+      // Set personal info
+      document.getElementById("name").innerText = userData.name;
+      document.getElementById("age").innerText = userData.age;
+      document.getElementById("weight").innerText = userData.weight + " kg";
+      document.getElementById("height").innerText = userData.height + " cm";
+      document.getElementById("risk-text").innerText = userData.bcRiskText; // risk text for breast cancer
+
+      // Risk bar
+      let bar = document.getElementById("risk-bar-fill");
+      bar.style.width = userData.bcRisk + "%";
+      if (userData.bcRisk < 40) bar.style.background = "#4caf50"; // Low
+      else if (userData.bcRisk < 70)
+        bar.style.background = "#ff9800"; // Moderate
+      else bar.style.background = "#f44336"; // High
+      bar.innerText = userData.bcRisk + "%";
+
+      // Lifestyle recommendations based on risk level
+      let rec = "";
+      if (userData.bcRiskText === "Low") {
+        rec =
+          "✅ Maintain a healthy diet, exercise regularly, perform monthly self-checks, and continue regular screenings.";
+      } else if (userData.bcRiskText === "Moderate") {
+        rec =
+          "⚠️ Schedule regular clinical screenings, maintain a balanced diet, avoid alcohol & smoking, exercise regularly, and do self-checks monthly.";
+      } else if (userData.bcRiskText === "High") {
+        rec =
+          "🚨 Consult an gynecologist promptly, schedule diagnostic tests, maintain a healthy lifestyle, reduce stress, and perform regular self-checks.";
+      }
+
+      document.getElementById("recommendation").innerText = rec;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,134 @@
+/* 🌸 FEMISHIELD MAIN STYLE */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #ffe6f2, #ffeef7);
+  color: #4a2040;
+  min-height: 100vh;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  flex-direction: column;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.content {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 600px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 2rem;
+  color: #a04c86;
+  margin-bottom: 15px;
+}
+
+.quote {
+  font-size: 1rem;
+  color: #6b4267;
+  margin-bottom: 30px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  color: #a04c86;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: all 0.3s;
+}
+
+input:focus {
+  border-color: #d45584;
+  box-shadow: 0 0 6px rgba(212, 85, 132, 0.3);
+}
+
+.btn {
+  background: linear-gradient(90deg, #d45584, #a04c86);
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(212, 85, 132, 0.3);
+}
+
+.assessment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.question-card {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(255, 140, 170, 0.15);
+}
+
+.question-text {
+  font-weight: 600;
+  color: #a04c86;
+  margin-bottom: 10px;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.option-btn {
+  padding: 10px 25px;
+  border-radius: 25px;
+  border: none;
+  background: linear-gradient(90deg, #ffc8dc, #ffebf5);
+  color: #a04c86;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.option-btn:hover,
+.option-btn.active {
+  background: linear-gradient(90deg, #d45584, #a04c86);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(212, 85, 132, 0.3);
+}

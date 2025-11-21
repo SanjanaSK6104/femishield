@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FemiShield PCOS Assessment</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #ffe6f2;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 800px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 35px;
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(255, 192, 203, 0.4);
+      }
+      h1,
+      h2 {
+        text-align: center;
+        color: #d63384;
+      }
+      label {
+        display: block;
+        margin-top: 20px;
+        font-weight: 600;
+        color: #444;
+      }
+      input[type="text"],
+      input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        margin-top: 5px;
+        font-size: 14px;
+      }
+      .question {
+        margin-top: 20px;
+        background: #fff0f5;
+        padding: 15px;
+        border-radius: 10px;
+      }
+      .options label {
+        display: block;
+        font-weight: 500;
+        margin: 6px 0;
+        cursor: pointer;
+        color: #555;
+      }
+      input[type="radio"] {
+        accent-color: #d63384;
+        margin-right: 8px;
+      }
+      button {
+        display: block;
+        margin: 30px auto;
+        padding: 12px 30px;
+        background: #ff69b4;
+        color: #fff;
+        font-size: 16px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+      button:hover {
+        background: #e75480;
+      }
+      .hidden {
+        display: none;
+      }
+      .report {
+        text-align: center;
+        background: #fff0f5;
+        padding: 30px;
+        border-radius: 15px;
+        color: #444;
+      }
+      .risk {
+        font-weight: bold;
+        font-size: 18px;
+      }
+      .advice {
+        margin-top: 15px;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Quiz Container -->
+    <div class="container" id="quizContainer">
+      <h1>💗 FemiShield PCOS/PCOD Self Assessment 💗</h1>
+      <h2>Personal Information</h2>
+
+      <label>Name:</label>
+      <input type="text" id="name" required />
+      <label>Age:</label>
+      <input type="number" id="age" required />
+      <label>Height (in cm):</label>
+      <input type="number" id="height" required />
+      <label>Weight (in kg):</label>
+      <input type="number" id="weight" required />
+
+      <h2>Questionnaire</h2>
+      <div id="questions">
+        <!-- Questions 1-15 -->
+        <div class="question" id="q1">
+          <p>1. Do your periods come late or skip months frequently?</p>
+          <div class="options">
+            <label><input type="radio" name="q1" value="1" />Rarely</label>
+            <label><input type="radio" name="q1" value="2" />Sometimes</label>
+            <label><input type="radio" name="q1" value="3" />Often</label>
+          </div>
+        </div>
+        <div class="question" id="q2">
+          <p>2. Are your periods painful or unpredictable?</p>
+          <div class="options">
+            <label><input type="radio" name="q2" value="2" />Yes</label>
+            <label><input type="radio" name="q2" value="1" />No</label>
+          </div>
+        </div>
+        <div class="question" id="q3">
+          <p>3. Did your period patterns change suddenly in the last year?</p>
+          <div class="options">
+            <label><input type="radio" name="q3" value="1" />No</label>
+            <label><input type="radio" name="q3" value="2" />Yes</label>
+          </div>
+        </div>
+        <div class="question" id="q4">
+          <p>4. Do you often get acne on your cheeks, chin, or jawline?</p>
+          <div class="options">
+            <label><input type="radio" name="q4" value="1" />Rarely</label>
+            <label><input type="radio" name="q4" value="2" />Frequently</label>
+            <label><input type="radio" name="q4" value="3" />Severe</label>
+          </div>
+        </div>
+        <div class="question" id="q5">
+          <p>
+            5. Have you noticed extra hair growth on your face, chest, or
+            stomach?
+          </p>
+          <div class="options">
+            <label><input type="radio" name="q5" value="1" />No</label>
+            <label><input type="radio" name="q5" value="2" />Yes, mild</label>
+            <label
+              ><input type="radio" name="q5" value="3" />Yes, noticeable</label
+            >
+          </div>
+        </div>
+        <div class="question" id="q6">
+          <p>6. Is your scalp hair thinning or falling out more than usual?</p>
+          <div class="options">
+            <label><input type="radio" name="q6" value="1" />No</label>
+            <label><input type="radio" name="q6" value="2" />Slightly</label>
+            <label><input type="radio" name="q6" value="3" />Yes</label>
+          </div>
+        </div>
+        <div class="question" id="q7">
+          <p>7. Have you gained weight suddenly or found it hard to lose it?</p>
+          <div class="options">
+            <label><input type="radio" name="q7" value="1" />No</label>
+            <label><input type="radio" name="q7" value="2" />Yes</label>
+          </div>
+        </div>
+        <div class="question" id="q8">
+          <p>8. Do you feel bloated or tired even after resting?</p>
+          <div class="options">
+            <label><input type="radio" name="q8" value="1" />No</label>
+            <label><input type="radio" name="q8" value="2" />Sometimes</label>
+            <label><input type="radio" name="q8" value="3" />Often</label>
+          </div>
+        </div>
+        <div class="question" id="q9">
+          <p>9. Do you crave sugary or processed food often?</p>
+          <div class="options">
+            <label><input type="radio" name="q9" value="1" />No</label>
+            <label><input type="radio" name="q9" value="2" />Sometimes</label>
+            <label><input type="radio" name="q9" value="3" />Frequently</label>
+          </div>
+        </div>
+        <div class="question" id="q10">
+          <p>10. Do you feel low on energy or dizzy if you skip meals?</p>
+          <div class="options">
+            <label><input type="radio" name="q10" value="1" />No</label>
+            <label><input type="radio" name="q10" value="2" />Sometimes</label>
+            <label><input type="radio" name="q10" value="3" />Often</label>
+          </div>
+        </div>
+        <div class="question" id="q11">
+          <p>
+            11. Do you sleep less than 7 hours or have irregular sleep cycles?
+          </p>
+          <div class="options">
+            <label><input type="radio" name="q11" value="1" />No</label>
+            <label><input type="radio" name="q11" value="2" />Sometimes</label>
+            <label><input type="radio" name="q11" value="3" />Yes</label>
+          </div>
+        </div>
+        <div class="question" id="q12">
+          <p>12. Do you experience mood swings, anxiety, or irritability?</p>
+          <div class="options">
+            <label><input type="radio" name="q12" value="1" />Rarely</label>
+            <label><input type="radio" name="q12" value="2" />Sometimes</label>
+            <label><input type="radio" name="q12" value="3" />Often</label>
+          </div>
+        </div>
+        <div class="question" id="q13">
+          <p>13. Do you feel stressed or overwhelmed easily?</p>
+          <div class="options">
+            <label><input type="radio" name="q13" value="1" />Rarely</label>
+            <label><input type="radio" name="q13" value="2" />Sometimes</label>
+            <label><input type="radio" name="q13" value="3" />Often</label>
+          </div>
+        </div>
+        <div class="question" id="q14">
+          <p>14. Does anyone in your family have PCOS, thyroid, or diabetes?</p>
+          <div class="options">
+            <label><input type="radio" name="q14" value="1" />No</label>
+            <label><input type="radio" name="q14" value="2" />Yes</label>
+          </div>
+        </div>
+        <div class="question" id="q15">
+          <p>
+            15. Have you ever been told by a doctor that you might have hormonal
+            imbalance?
+          </p>
+          <div class="options">
+            <label><input type="radio" name="q15" value="1" />No</label>
+            <label><input type="radio" name="q15" value="2" />Yes</label>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" onclick="generateReport()">Submit</button>
+    </div>
+
+    <!-- Report Container -->
+    <div class="container hidden" id="resultContainer">
+      <div class="report" id="report"></div>
+      <button onclick="window.print()">📄 Download/Print Report</button>
+    </div>
+
+    <script>
+      const backendURL = "http://127.0.0.1:5000"; // Flask backend
+
+      async function sendAssessment(
+        userEmail,
+        personalInfo,
+        answers,
+        totalScore,
+        riskLevel
+      ) {
+        try {
+          const res = await fetch(`${backendURL}/assessment`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: userEmail || "guest",
+              personalInfo,
+              answers,
+              totalScore,
+              riskLevel,
+            }),
+          });
+          const data = await res.json();
+          return data;
+        } catch (err) {
+          console.error("Backend error ❌", err);
+          alert("Error connecting to backend ❌");
+        }
+      }
+
+      async function generateReport() {
+        const name = document.getElementById("name").value.trim();
+        const age = document.getElementById("age").value;
+        const height = document.getElementById("height").value;
+        const weight = document.getElementById("weight").value;
+
+        if (!name || !age || !height || !weight) {
+          alert("Please fill all personal details");
+          return;
+        }
+
+        const questions = 15;
+        let score = 0;
+        const answersArray = [];
+
+        for (let i = 1; i <= questions; i++) {
+          const sel = document.querySelector(`input[name="q${i}"]:checked`);
+          if (!sel) {
+            alert(`Please answer question ${i}`);
+            return;
+          }
+          answersArray.push({
+            question: i,
+            answer: sel.parentElement.textContent.trim(),
+            score: parseInt(sel.value),
+          });
+          score += parseInt(sel.value);
+        }
+
+        const bmi = (weight / (height / 100) ** 2).toFixed(1);
+
+        let risk = "",
+          advice = "",
+          riskColor = "";
+        if (score <= 8) {
+          risk = "Low Risk 🌿";
+          advice = "Maintain a balanced lifestyle";
+          riskColor = "#28a745";
+        } else if (score <= 18) {
+          risk = "Moderate Risk 🌸";
+          advice = "Monitor cycles & consult gynecologist";
+          riskColor = "#ffc107";
+        } else {
+          risk = "High Risk 💗";
+          advice = "Consult gynecologist immediately";
+          riskColor = "#dc3545";
+        }
+
+        document.getElementById("quizContainer").classList.add("hidden");
+
+        const reportHTML = `
+          <div style="text-align:right; font-size:14px; color:#555; margin-bottom:10px;">
+            📞 1234567890 | 0987654321 &nbsp;&nbsp;|&nbsp;&nbsp; 📧 femishield@proj.com
+          </div>
+          <h2>FemiShield PCOS Assessment Report</h2>
+          <table border="1" cellpadding="10" cellspacing="0" style="margin:auto;margin-top:20px;border-collapse: collapse;width:80%;">
+            <tr style="background:#ffe6f2;text-align:left;"><th>Field</th><th>Details</th></tr>
+            <tr><td>Name</td><td>${name}</td></tr>
+            <tr><td>Age</td><td>${age}</td></tr>
+            <tr><td>Height</td><td>${height} cm</td></tr>
+            <tr><td>Weight</td><td>${weight} kg</td></tr>
+            <tr><td>BMI</td><td>${bmi}</td></tr>
+          </table>
+          <h3 style="margin-top:20px;">Risk Level</h3>
+          <p class="risk" style="color:${riskColor}; font-weight:bold;">${risk}</p>
+          <p class="advice">💡 ${advice}</p>
+        `;
+        document.getElementById("report").innerHTML = reportHTML;
+        document.getElementById("resultContainer").classList.remove("hidden");
+
+        // Send to backend
+        const userEmail = localStorage.getItem("userEmail") || "guest";
+        const result = await sendAssessment(
+          userEmail,
+          { name, age, height, weight, bmi },
+          answersArray,
+          score,
+          risk
+        );
+
+        if (result && result.comparison) {
+          const comparisonDiv = document.createElement("p");
+          comparisonDiv.style.fontWeight = "600";
+          comparisonDiv.style.marginTop = "15px";
+          comparisonDiv.textContent = result.comparison;
+          document.getElementById("report").appendChild(comparisonDiv);
+        }
+
+        if (result && result.success) {
+          alert("📧 Report has been saved successfully!");
+        }
+      }
+    </script>
+  </body>
+</html>

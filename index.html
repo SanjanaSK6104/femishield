@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FemiShield - Women's Health Awareness</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #ffeef5;
+        color: #b03762;
+      }
+
+      /* Navigation */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #fff0f5;
+        padding: 15px 40px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      nav a {
+        color: #b03762;
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+      nav a:hover {
+        color: #ff4d94;
+      }
+
+      /* Hero Section */
+      .hero {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 60px 40px;
+        background: #fdeff2;
+      }
+      .hero img {
+        width: 100%;
+        max-width: 300px;
+        border-radius: 20px;
+      }
+      .hero-text {
+        flex: 1;
+        padding: 20px;
+      }
+      .hero-text h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+      .hero-text p {
+        font-size: 20px;
+        font-style: italic;
+      }
+
+      /* Awareness Cards */
+      .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 40px;
+      }
+      .card {
+        background: #fff0f5;
+        padding: 30px;
+        border-radius: 15px;
+        width: 350px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      .card h3 {
+        margin-bottom: 15px;
+        color: #c54b6c;
+      }
+      .card p {
+        margin: 5px 0 12px 0;
+        line-height: 1.5;
+      }
+      .card strong {
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 5px;
+      }
+
+      /* Footer */
+      footer {
+        background: #fff0f5;
+        padding: 20px 40px;
+        text-align: center;
+        font-size: 14px;
+        color: #b03762;
+      }
+
+      @media (max-width: 900px) {
+        .hero {
+          flex-direction: column;
+          text-align: center;
+        }
+        .hero-text {
+          padding: 20px 0;
+        }
+        .cards {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div>
+        <a href="#">Home</a>
+        <a href="#pcos">PCOS Awareness</a>
+        <a href="#breast">Breast Cancer Awareness</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>
+        <a href="signin.html">Sign In</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <img src="woman_silhouette.png" alt="woman_silhouette" />
+      <div class="hero-text">
+        <h1>Welcome to FemiShield 🌸</h1>
+        <p>"Shielding You from Health Risks, Empowering You Every Day."</p>
+      </div>
+    </section>
+
+    <!-- Awareness Cards -->
+    <section class="cards">
+      <!-- PCOS Card -->
+      <div class="card" id="pcos">
+        <h3>PCOS / PCOD Awareness</h3>
+        <p>
+          <strong>What is PCOS?</strong> Polycystic Ovary Syndrome is a hormonal
+          disorder causing enlarged ovaries with small cysts on the outer edges.
+        </p>
+        <p>
+          <strong>Causes:</strong> Hormonal imbalance, genetics, insulin
+          resistance, obesity.
+        </p>
+        <p>
+          <strong>Prevention / Management:</strong> Healthy diet, regular
+          exercise, maintaining healthy weight, stress management, and medical
+          treatment if required.
+        </p>
+      </div>
+
+      <!-- Breast Cancer Card -->
+      <div class="card" id="breast">
+        <h3>Breast Cancer Awareness</h3>
+        <p>
+          <strong>What is Breast Cancer?</strong> Breast cancer occurs when
+          cells in the breast grow uncontrollably, forming a malignant tumor.
+        </p>
+        <p>
+          <strong>Causes:</strong> Genetics (BRCA mutations), age, family
+          history, hormonal factors, lifestyle factors like smoking and alcohol.
+        </p>
+        <p>
+          <strong>Prevention:</strong> Regular self-exams, mammograms, healthy
+          lifestyle, limiting alcohol, avoiding smoking, and consulting a doctor
+          for high-risk cases.
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact">
+      📞 1234567890 | 0987654321 &nbsp;&nbsp;|&nbsp;&nbsp; 📧
+      femishield@proj.com
+    </footer>
+  </body>
+</html>
