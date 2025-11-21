@@ -3,180 +3,315 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FemiShield - Women's Health Awareness</title>
+    <title>Femishield - Empowering Women's Health</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
-      body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #ffeef5;
-        color: #b03762;
+      /* Custom Pink & White Palette */
+      :root {
+        --color-white: #ffffff;
+        --color-pink-lightest: #fdf5f6; /* Very light pink/off-white */
+        --color-pink-soft: #f7e1e6; /* Soft background pink */
+        --color-pink-medium: #e09ba5; /* Main accent pink */
+        --color-pink-dark: #b85c6c; /* Darker text/hover pink */
+        --color-text-dark: #333333;
+        --font-primary: "Poppins", sans-serif;
       }
 
-      /* Navigation */
-      nav {
+      /* Global Reset and Typography */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font-primary);
+        line-height: 1.6;
+        background-color: var(--color-pink-lightest);
+        color: var(--color-text-dark);
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Navigation Bar */
+      .navbar {
+        background-color: var(--color-white);
+        padding: 15px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .navbar .container {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background: #fff0f5;
-        padding: 15px 40px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       }
-      nav a {
-        color: #b03762;
+
+      .logo {
+        color: var(--color-pink-dark);
+        font-weight: 700;
+        font-size: 1.8em;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+      }
+
+      .nav-links li {
+        margin-left: 30px;
+      }
+
+      .nav-links a {
         text-decoration: none;
-        margin: 0 15px;
+        color: var(--color-text-dark);
         font-weight: 600;
-        transition: 0.3s;
+        transition: color 0.3s;
+        padding: 5px 0;
+        position: relative;
       }
-      nav a:hover {
-        color: #ff4d94;
+
+      .nav-links a:hover {
+        color: var(--color-pink-medium);
+      }
+
+      /* Call to Action Button in Nav */
+      .cta-button {
+        background-color: var(--color-pink-medium);
+        color: var(--color-white) !important;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-weight: 600;
+        transition: background-color 0.3s;
+      }
+
+      .cta-button:hover {
+        background-color: var(--color-pink-dark);
       }
 
       /* Hero Section */
-      .hero {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        padding: 60px 40px;
-        background: #fdeff2;
-      }
-      .hero img {
-        width: 100%;
-        max-width: 300px;
-        border-radius: 20px;
-      }
-      .hero-text {
-        flex: 1;
-        padding: 20px;
-      }
-      .hero-text h1 {
-        font-size: 36px;
-        margin-bottom: 20px;
-      }
-      .hero-text p {
-        font-size: 20px;
-        font-style: italic;
+      .hero-section {
+        background-color: var(--color-pink-soft);
+        padding: 80px 0;
       }
 
-      /* Awareness Cards */
-      .cards {
+      .hero-section .container {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        padding: 40px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
       }
-      .card {
-        background: #fff0f5;
-        padding: 30px;
-        border-radius: 15px;
-        width: 350px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+      .hero-content {
+        max-width: 50%;
       }
-      .card h3 {
+
+      .hero-content h2 {
+        font-size: 3em;
+        color: var(--color-pink-dark);
         margin-bottom: 15px;
-        color: #c54b6c;
+        line-height: 1.1;
       }
-      .card p {
-        margin: 5px 0 12px 0;
-        line-height: 1.5;
+
+      .hero-content p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+        color: #666;
       }
-      .card strong {
-        display: block;
-        margin-top: 10px;
-        margin-bottom: 5px;
+
+      .main-cta-button {
+        display: inline-block;
+        background-color: var(--color-pink-medium);
+        color: var(--color-white);
+        padding: 12px 25px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 700;
+        transition: background-color 0.3s;
+      }
+
+      .main-cta-button:hover {
+        background-color: var(--color-pink-dark);
+      }
+
+      .hero-visual {
+        width: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Styling for the image within hero-visual */
+      .hero-visual img {
+        max-width: 80%; /* Ensure image fits within its container */
+        height: auto; /* Maintain aspect ratio */
+        display: block; /* Remove extra space below image */
+        border-radius: 10px; /* Optional: adds soft corners to your image */
+        box-shadow: 0 10px 20px rgba(224, 155, 165, 0.4); /* Optional: adds a subtle shadow */
+      }
+
+      /* Feature Sections */
+      .feature-section {
+        padding: 60px 0;
+        text-align: center;
+        background-color: var(--color-white);
+      }
+
+      .light-pink-bg {
+        background-color: var(--color-pink-lightest);
+      }
+
+      .feature-icon {
+        font-size: 2.5em;
+        color: var(--color-pink-medium);
+        margin-bottom: 15px;
+      }
+
+      .pink-ribbon {
+        color: var(--color-pink-dark); /* Darker pink for the ribbon icon */
+      }
+
+      .feature-section h3 {
+        font-size: 1.8em;
+        color: var(--color-pink-dark);
+        margin-bottom: 10px;
+      }
+
+      .feature-section p {
+        max-width: 600px;
+        margin: 0 auto 20px;
+        color: #555;
+      }
+
+      .secondary-cta {
+        color: var(--color-pink-medium);
+        text-decoration: none;
+        font-weight: 600;
+        border-bottom: 2px solid var(--color-pink-medium);
+        transition: color 0.3s, border-color 0.3s;
+      }
+
+      .secondary-cta:hover {
+        color: var(--color-pink-dark);
+        border-color: var(--color-pink-dark);
       }
 
       /* Footer */
-      footer {
-        background: #fff0f5;
-        padding: 20px 40px;
+      .footer {
+        background-color: var(--color-pink-dark);
+        color: var(--color-white);
         text-align: center;
-        font-size: 14px;
-        color: #b03762;
+        padding: 20px 0;
+        font-size: 0.9em;
       }
 
-      @media (max-width: 900px) {
-        .hero {
+      /* Media Query for Responsiveness */
+      @media (max-width: 768px) {
+        .navbar .container {
+          flex-direction: column;
+        }
+        .nav-links {
+          margin-top: 10px;
+          justify-content: center;
+        }
+        .nav-links li {
+          margin: 0 10px;
+        }
+        .hero-section .container {
           flex-direction: column;
           text-align: center;
         }
-        .hero-text {
-          padding: 20px 0;
+        .hero-content,
+        .hero-visual {
+          max-width: 100%;
+          width: 100%;
         }
-        .cards {
-          flex-direction: column;
-          align-items: center;
+        .hero-content h2 {
+          font-size: 2.5em;
+        }
+        .hero-visual {
+          order: -1; /* Move visual above text on mobile */
+          margin-bottom: 30px;
         }
       }
     </style>
   </head>
   <body>
-    <!-- Navigation -->
-    <nav>
-      <div>
-        <a href="#">Home</a>
-        <a href="#pcos">PCOS Awareness</a>
-        <a href="#breast">Breast Cancer Awareness</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <div>
-        <a href="signin.html">Sign In</a>
+    <nav class="navbar">
+      <div class="container">
+        <h1 class="logo">Femishield</h1>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#breast-health">Breast Health</a></li>
+          <li><a href="#pcos-pcod">PCOS/PCOD</a></li>
+          <li><a href="#resources">Resources</a></li>
+          <li><a href="signin.html" class="cta-button">Sign In</a></li>
+        </ul>
       </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-      <img src="woman_silhouette.png" alt="woman_silhouette" />
-      <div class="hero-text">
-        <h1>Welcome to FemiShield 🌸</h1>
-        <p>"Shielding You from Health Risks, Empowering You Every Day."</p>
+    <header id="home" class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <h2>Empowering Every Woman's Journey</h2>
+          <p>
+            Comprehensive support and essential resources for Breast Health,
+            PCOS/PCOD, and total well-being.
+          </p>
+          <a href="signin.html" class="main-cta-button"
+            >Sign In to Get Started</a
+          >
+        </div>
+        <div class="hero-visual">
+          <img src="woman_silhouette.png" alt="Empowering Women's Health" />
+        </div>
+      </div>
+    </header>
+
+    <section id="breast-health" class="feature-section">
+      <div class="container">
+        <i class="fas fa-ribbon feature-icon pink-ribbon"></i>
+        <h3>Breast Health Awareness</h3>
+        <p>
+          Early detection saves lives. Learn about screening guidelines,
+          self-exams, and what you need to know about breast cancer prevention
+          and support.
+        </p>
+        <a href="#" class="secondary-cta">Explore Resources</a>
       </div>
     </section>
 
-    <!-- Awareness Cards -->
-    <section class="cards">
-      <!-- PCOS Card -->
-      <div class="card" id="pcos">
-        <h3>PCOS / PCOD Awareness</h3>
+    <section id="pcos-pcod" class="feature-section light-pink-bg">
+      <div class="container">
+        <i class="fas fa-hand-holding-heart feature-icon"></i>
+        <h3>Understanding PCOS/PCOD</h3>
         <p>
-          <strong>What is PCOS?</strong> Polycystic Ovary Syndrome is a hormonal
-          disorder causing enlarged ovaries with small cysts on the outer edges.
+          Navigate the complexities of Polycystic Ovary Syndrome (PCOS). Find
+          guidance on symptom management, fertility, and holistic health
+          approaches.
         </p>
-        <p>
-          <strong>Causes:</strong> Hormonal imbalance, genetics, insulin
-          resistance, obesity.
-        </p>
-        <p>
-          <strong>Prevention / Management:</strong> Healthy diet, regular
-          exercise, maintaining healthy weight, stress management, and medical
-          treatment if required.
-        </p>
-      </div>
-
-      <!-- Breast Cancer Card -->
-      <div class="card" id="breast">
-        <h3>Breast Cancer Awareness</h3>
-        <p>
-          <strong>What is Breast Cancer?</strong> Breast cancer occurs when
-          cells in the breast grow uncontrollably, forming a malignant tumor.
-        </p>
-        <p>
-          <strong>Causes:</strong> Genetics (BRCA mutations), age, family
-          history, hormonal factors, lifestyle factors like smoking and alcohol.
-        </p>
-        <p>
-          <strong>Prevention:</strong> Regular self-exams, mammograms, healthy
-          lifestyle, limiting alcohol, avoiding smoking, and consulting a doctor
-          for high-risk cases.
-        </p>
+        <a href="#" class="secondary-cta">Get Support</a>
       </div>
     </section>
 
-    <!-- Footer / Contact -->
-    <footer id="contact">
-      📞 1234567890 | 0987654321 &nbsp;&nbsp;|&nbsp;&nbsp; 📧
-      femishield@proj.com
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 Femishield. All rights reserved.</p>
+      </div>
     </footer>
   </body>
 </html>
